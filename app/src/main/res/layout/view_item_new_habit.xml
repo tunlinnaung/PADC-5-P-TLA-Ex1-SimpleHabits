@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="200dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="@dimen/margin_medium"
+    android:background="@color/background">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_evening"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        card_view:cardCornerRadius="@dimen/margin_card_medium"
+        card_view:cardElevation="@dimen/margin_small"
+        card_view:cardMaxElevation="@dimen/margin_card_medium">
+
+        <RelativeLayout
+            android:id="@+id/rl_evening_image"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/accent">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cloud_done_24dp"
+                android:background="@color/accent"
+                android:padding="@dimen/margin_medium"
+                />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_24dp"
+                android:background="@color/accent"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/margin_medium"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_evening_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mini Retreat For Moms"
+        android:layout_below="@id/cv_evening"
+        android:paddingTop="@dimen/margin_medium"
+        android:textColor="@color/white_full"
+        android:textSize="@dimen/text_regular_2x"
+        />
+
+    <TextView
+        android:id="@+id/tv_evening_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 mins"
+        android:layout_below="@id/tv_evening_title"
+        android:paddingTop="@dimen/margin_small"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_regular"
+        />
+
+</RelativeLayout>

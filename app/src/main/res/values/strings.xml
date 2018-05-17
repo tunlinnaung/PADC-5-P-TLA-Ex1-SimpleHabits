@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PADC-5-P-TLA-Ex1-SimpleHabits</string>
+    <string name="txt_start">Start Here</string>
+    <string name="txt_starter">Day 1</string>
+    <string name="txt_evening_title">Evening Meditations</string>
+    <string name="txt_healthy_mind">A Healthy Mind</string>
+    <string name="txt_new_simple_habit">New on Simple Habit</string>
+    <string name="txt_most_popular">Most Popular</string>
+    <string name="txt_all_topics">All Topics</string>
+    <string name="txt_evening_label">Mindful Sleep</string>
 </resources>
