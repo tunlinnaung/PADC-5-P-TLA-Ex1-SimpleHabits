@@ -1,4 +1,4 @@
-package adapters;
+package xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,19 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import viewholders.AllTopicsViewHolder;
-import viewholders.EveningMeditationViewHolder;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders.AllTopicsViewHolder;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 
 /**
  * Created by eidoshack on 5/17/18.
  */
 
-public class AllTopicsAdapter extends RecyclerView.Adapter {
+public class AllTopicsAdapter extends BaseRecyclerAdapter {
+
     private LayoutInflater mLayoutInflator;
 
     public AllTopicsAdapter(Context context) {
-        mLayoutInflator = LayoutInflater.from(context);
+        super(context);
     }
 
     @NonNull
@@ -27,15 +27,5 @@ public class AllTopicsAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View allTopicsItemView = mLayoutInflator.inflate(R.layout.view_item_all_topics, parent, false);
         return new AllTopicsViewHolder(allTopicsItemView);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 9;
     }
 }

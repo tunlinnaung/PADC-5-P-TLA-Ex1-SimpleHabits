@@ -8,4 +8,6 @@
     <string name="txt_most_popular">Most Popular</string>
     <string name="txt_all_topics">All Topics</string>
     <string name="txt_evening_label">Mindful Sleep</string>
+    <string name="lbl_no_data">No Data to Display</string>
+    <string name="lbl_refresh">Refresh</string>
 </resources>
