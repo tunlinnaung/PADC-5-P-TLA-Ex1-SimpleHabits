@@ -10,4 +10,5 @@
     <string name="txt_evening_label">Mindful Sleep</string>
     <string name="lbl_no_data">No Data to Display</string>
     <string name="lbl_refresh">Refresh</string>
+    <string name="lbl_progress_title">Progress</string>
 </resources>

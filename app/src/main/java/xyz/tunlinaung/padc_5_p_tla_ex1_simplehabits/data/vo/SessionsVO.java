@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by eidoshack on 5/23/18.
  */
 
-class SessionsVO {
+public class SessionsVO {
 
     @SerializedName("session-id")
     private String sessionId;

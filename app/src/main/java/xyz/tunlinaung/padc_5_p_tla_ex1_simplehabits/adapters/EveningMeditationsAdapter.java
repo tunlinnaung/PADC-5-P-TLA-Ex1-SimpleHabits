@@ -15,7 +15,6 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
  */
 
 public class EveningMeditationsAdapter extends BaseRecyclerAdapter {
-    private LayoutInflater mLayoutInflator;
 
     public EveningMeditationsAdapter(Context context) {
         super(context);

@@ -16,8 +16,6 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 
 public class AllTopicsAdapter extends BaseRecyclerAdapter {
 
-    private LayoutInflater mLayoutInflator;
-
     public AllTopicsAdapter(Context context) {
         super(context);
     }

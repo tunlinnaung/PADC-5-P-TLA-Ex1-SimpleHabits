@@ -15,7 +15,6 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
  */
 
 public class MostPopularAdapter extends BaseRecyclerAdapter {
-    private LayoutInflater mLayoutInflator;
 
     public MostPopularAdapter(Context context) {
         super(context);
@@ -26,5 +25,10 @@ public class MostPopularAdapter extends BaseRecyclerAdapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View mostPopularItemView = mLayoutInflator.inflate(R.layout.view_item_most_popular, parent, false);
         return new MostPopularViewHolder(mostPopularItemView);
+    }
+
+    @Override
+    public int getItemCount() {
+        return 9;
     }
 }

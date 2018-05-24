@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.components.MeViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_medium">
+
+        <TextView
+            android:id="@+id/tv_progress_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_progress_title"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular_2x"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_below="@id/tv_progress_title"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_medium_3"
+            android:layout_marginRight="@dimen/margin_medium_3">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_height"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_current_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_big"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Current Day Streak"
+                    android:layout_below="@id/tv_current_count"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:gravity="center"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_height"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/margin_medium_3"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_total_session_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_big"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Sessions"
+                    android:layout_below="@id/tv_total_session_count"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:gravity="center"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_height"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/margin_medium_3"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_total_mins_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_big"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Minutes"
+                    android:layout_below="@id/tv_total_mins_count"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:gravity="center"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.components.MeViewPod>

@@ -15,7 +15,6 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
  */
 
 public class HealthyMindAdapter extends BaseRecyclerAdapter {
-    private LayoutInflater mLayoutInflator;
 
     public HealthyMindAdapter(Context context) {
         super(context);
