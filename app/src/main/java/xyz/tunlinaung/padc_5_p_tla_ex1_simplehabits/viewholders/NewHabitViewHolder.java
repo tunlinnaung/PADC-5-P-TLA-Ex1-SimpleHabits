@@ -17,11 +17,10 @@ public class NewHabitViewHolder extends BaseViewHolder {
 
     public NewHabitViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
     }
 
     @Override
-    public void setData(Object data) {
+    public void setData(Object data, int position) {
 
     }
 

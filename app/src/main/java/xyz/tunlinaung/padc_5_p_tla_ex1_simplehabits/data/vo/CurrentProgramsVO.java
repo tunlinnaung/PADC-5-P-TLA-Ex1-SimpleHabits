@@ -19,7 +19,7 @@ public class CurrentProgramsVO {
     private String description;
     @SerializedName("average-lengths")
     private List<Integer> averageLengths;
-    //private List<SessionVO> sessions;
+    private List<SessionsVO> sessions;
 
     public String getProgramId() {
         return programId;
@@ -69,11 +69,11 @@ public class CurrentProgramsVO {
         this.averageLengths = averageLengths;
     }
 
-//    public List<SessionVO> getSessions() {
-//        return sessions;
-//    }
-//
-//    public void setSessions(List<SessionVO> sessions) {
-//        this.sessions = sessions;
-//    }
+    public List<SessionsVO> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<SessionsVO> sessions) {
+        this.sessions = sessions;
+    }
 }

@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ss.bottomnavigation.BottomNavigation;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.AllTopicsAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.EveningMeditationsAdapter;
@@ -25,9 +27,11 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.MostPopularAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.NewHabitAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.models.SimpleHabitsModel;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.SeriesDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.events.RestApiEvents;
 
-public class SeriesActivity extends BaseActivity {
+public class SeriesActivity extends BaseActivity implements SeriesDelegate {
 
     @BindView(R.id.tv_starter_title)
     TextView tvStarterTitle;
@@ -51,6 +55,8 @@ public class SeriesActivity extends BaseActivity {
 
     AlertDialog dialog;
 
+    CurrentProgramsVO mCurrentProgram;
+
     public static Intent newIntent(Context context) {
         return new Intent(context, SeriesActivity.class);
     }
@@ -63,17 +69,19 @@ public class SeriesActivity extends BaseActivity {
 
         SimpleHabitsModel.getInstance().startLoadingSimpleHabits();
 
+        mCurrentProgram = new CurrentProgramsVO();
+
         dialog = new SpotsDialog(this, "Loading...");
         dialog.show();
 
         rvEvening = findViewById(R.id.rv_evening_meditation);
         rvEvening.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        eveningAdapter = new EveningMeditationsAdapter(getApplicationContext());
+        eveningAdapter = new EveningMeditationsAdapter(getApplicationContext(), this);
         rvEvening.setAdapter(eveningAdapter);
 
         rvHealthyMind = findViewById(R.id.rv_healthy_mind);
         rvHealthyMind.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        healthyMindAdapter = new HealthyMindAdapter(getApplicationContext());
+        healthyMindAdapter = new HealthyMindAdapter(getApplicationContext(), this);
         rvHealthyMind.setAdapter(healthyMindAdapter);
 
         rvNewHabit = findViewById(R.id.rv_new_simple_habit);
@@ -123,6 +131,8 @@ public class SeriesActivity extends BaseActivity {
         //mNewsAdapter.appendNewData(event.getLoadNews());
 
         if (event.getLoadCurrentPrograms() != null) {
+            mCurrentProgram = event.getLoadCurrentPrograms();
+
             tvStarterTitle.setText(event.getLoadCurrentPrograms().getTitle());
             tvCurrentPeriod.setText(event.getLoadCurrentPrograms().getCurrentPeriod());
             tvAverageLengths.setText(event.getLoadCurrentPrograms().getAverageLengths().get(0) + " mins");
@@ -157,4 +167,18 @@ public class SeriesActivity extends BaseActivity {
         Snackbar.make(rvEvening, event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
     }
 
+    @OnClick(R.id.cv_starter)
+    public void onTapCurrentProgram(View view) {
+        Intent intent = SeriesDetailsActivity.newIntent(this.getApplicationContext());
+        intent.putExtra("CATEGORY", "CURRENT_PROGRAM");
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapProgram(String id) {
+        Intent intent = SeriesDetailsActivity.newIntent(this.getApplicationContext());
+        intent.putExtra("CATEGORY", "CATEGORY");
+        intent.putExtra("category_id", id);
+        startActivity(intent);
+    }
 }

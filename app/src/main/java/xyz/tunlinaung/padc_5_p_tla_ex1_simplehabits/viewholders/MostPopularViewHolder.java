@@ -14,7 +14,7 @@ public class MostPopularViewHolder extends BaseViewHolder {
     }
 
     @Override
-    public void setData(Object data) {
+    public void setData(Object data, int position) {
 
     }
 

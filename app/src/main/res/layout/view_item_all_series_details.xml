@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <RelativeLayout
+            android:id="@+id/rl_sessions"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/tv_session_count"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1"
+                android:padding="@dimen/margin_medium_3"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tv_session_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Introduction to mindfulness"
+                android:layout_toRightOf="@id/tv_session_count"
+                android:padding="@dimen/margin_medium_3"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x"
+                />
+
+            <TextView
+                android:id="@+id/tv_session_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5:33"
+                android:padding="@dimen/margin_medium_3"
+                android:layout_alignParentRight="true"
+                android:paddingTop="@dimen/margin_small"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

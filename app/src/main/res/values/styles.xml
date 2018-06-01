@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AppButton">
         <item name="android:paddingLeft">@dimen/margin_medium_2</item>
         <item name="android:paddingRight">@dimen/margin_medium_2</item>

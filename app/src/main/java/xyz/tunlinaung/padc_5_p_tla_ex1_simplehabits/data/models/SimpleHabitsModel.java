@@ -8,6 +8,7 @@ import java.util.List;
 
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.events.RestApiEvents;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.network.SimpleHabitsDataAgentImpl;
@@ -21,13 +22,14 @@ public class SimpleHabitsModel {
 
     private static SimpleHabitsModel objInstance;
 
-    private CurrentProgramsVO mCurrentProgram;
-    private List<CategoriesVO> mCategories;
-    private List<TopicsVO> mTopics;
+    public static CurrentProgramsVO mCurrentProgram;
+    public static List<CategoriesVO> mCategories;
+    public static List<TopicsVO> mTopics;
     private int mmNewsPageIndex = 1;
 
     private SimpleHabitsModel() {
         EventBus.getDefault().register(this);
+        mCurrentProgram = new CurrentProgramsVO();
         mCategories = new ArrayList<>();
         mTopics = new ArrayList<>();
     }
@@ -58,6 +60,17 @@ public class SimpleHabitsModel {
     @Subscribe
     public void onTopicsDataLoaded(RestApiEvents.TopicsDataLoadedEvent event) {
         mTopics.addAll(event.getLoadTopics());
+    }
+
+    public ProgramsVO getProgramId(String id) {
+        for (CategoriesVO categoriesVO : mCategories) {
+            for (ProgramsVO programsVO : categoriesVO.getPrograms()) {
+                if (programsVO.getProgramId().equalsIgnoreCase(id)) {
+                    return programsVO;
+                }
+            }
+        }
+        return new ProgramsVO();
     }
 
 }

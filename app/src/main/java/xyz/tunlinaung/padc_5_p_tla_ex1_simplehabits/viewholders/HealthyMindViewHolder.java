@@ -7,6 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.SeriesDelegate;
 
 /**
  * Created by eidoshack on 5/17/18.
@@ -20,13 +21,18 @@ public class HealthyMindViewHolder extends BaseViewHolder {
     @BindView(R.id.tv_evening_duration)
     TextView tvEveningDuration;
 
-    public HealthyMindViewHolder(View itemView) {
+    SeriesDelegate seriesDelegate;
+
+    ProgramsVO newHabitDataObj;
+
+    public HealthyMindViewHolder(View itemView, SeriesDelegate seriesDelegate) {
         super(itemView);
+        this.seriesDelegate = seriesDelegate;
     }
 
     @Override
-    public void setData(Object data) {
-        ProgramsVO newHabitDataObj = (ProgramsVO) data;
+    public void setData(Object data, int position) {
+        newHabitDataObj = (ProgramsVO) data;
         if (newHabitDataObj != null) {
             tvEveningTitle.setText(newHabitDataObj.getTitle());
             tvEveningDuration.setText(newHabitDataObj.getAverageLengths().get(0) + " mins");
@@ -35,6 +41,6 @@ public class HealthyMindViewHolder extends BaseViewHolder {
 
     @Override
     public void onClick(View view) {
-
+        seriesDelegate.onTapProgram(newHabitDataObj.getProgramId());
     }
 }

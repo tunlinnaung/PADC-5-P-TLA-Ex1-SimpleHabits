@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:background="@color/primary_dark"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/primary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/secondary_color">
+
+                <TextView
+                    android:id="@+id/tv_current_program_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simple Habit Starter"
+                    android:layout_centerInParent="true"
+                    android:paddingBottom="@dimen/margin_xxlarge"
+                    android:textSize="@dimen/text_regular_3x"
+                    android:textStyle="bold"
+                    android:textColor="@color/white_full"
+                    />
+
+            </RelativeLayout>
+
+            <!-- ActionBarSize = 56dp - default -->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_details"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/sv_current_program_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/primary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_current_program_main_content"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:background="@color/primary_dark">
+
+                <TextView
+                    android:id="@+id/tv_current_program_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Download"
+                    android:layout_alignParentBottom="true"
+                    android:padding="@dimen/margin_medium_3"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_regular_2x"
+                    />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false"
+                    android:gravity="right"
+                    android:padding="@dimen/margin_medium_3"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_current_program_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is our signature 7 day introductory course to indfulness meditation. In this series, you will learn the basic techniques of fundamental session. Welcome to our session."
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:padding="@dimen/margin_medium_3"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x"
+                android:maxLines="3"
+                />
+
+            <TextView
+                android:id="@+id/tv_current_program_read_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Read More"
+                android:gravity="center"
+                android:textColor="@color/black_full"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_current_program_sessions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sessions"
+                android:paddingLeft="@dimen/margin_medium_3"
+                android:paddingRight="@dimen/margin_medium_3"
+                android:paddingTop="@dimen/margin_medium_3"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_all_sessions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_favourite_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_arrow_24dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_marginRight="16dp"
+        app:fabSize="normal"
+        android:background="@color/button_color"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

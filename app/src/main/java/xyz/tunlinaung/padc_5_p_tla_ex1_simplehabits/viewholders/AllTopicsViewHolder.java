@@ -23,11 +23,10 @@ public class AllTopicsViewHolder extends BaseViewHolder {
 
     public AllTopicsViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
     }
 
     @Override
-    public void setData(Object data) {
+    public void setData(Object data, int position) {
         TopicsVO topicDatObj = (TopicsVO) data;
         tvTopicTitle.setText(topicDatObj.getTopicName());
         tvTopicDescription.setText(topicDatObj.getTopicDesc());
