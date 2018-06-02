@@ -41,8 +41,17 @@ public class SeriesDetailsActivity extends AppCompatActivity {
 
     AllSessionsAdapter allSessionsAdapter;
 
-    public static Intent newIntent(Context context) {
+    public static Intent newIntentByCurrentProgram(Context context) {
         Intent intent = new Intent(context, SeriesDetailsActivity.class);
+        intent.putExtra("CATEGORY", "CURRENT_PROGRAM");
+        return intent;
+    }
+
+    public static Intent newIntentByCategory(Context context, String categoryId, String programId) {
+        Intent intent = new Intent(context, SeriesDetailsActivity.class);
+        intent.putExtra("CATEGORY", "CATEGORY");
+        intent.putExtra("category_id", categoryId);
+        intent.putExtra("program_id", programId);
         return intent;
     }
 
@@ -66,12 +75,13 @@ public class SeriesDetailsActivity extends AppCompatActivity {
 
         String programData = getIntent().getStringExtra("CATEGORY");
         String categoryId = getIntent().getStringExtra("category_id");
+        String programId = getIntent().getStringExtra("program_id");
 
         if (programData.equalsIgnoreCase("CURRENT_PROGRAM")) {
-            CurrentProgramsVO currentProgramsVO = SimpleHabitsModel.getInstance().mCurrentProgram;
+            CurrentProgramsVO currentProgramsVO = SimpleHabitsModel.getInstance().getCurrentProgram();
             bindData(currentProgramsVO);
         } else if (programData.equalsIgnoreCase("CATEGORY")) {
-            ProgramsVO programsVO = SimpleHabitsModel.getInstance().getProgramId(categoryId);
+            ProgramsVO programsVO = SimpleHabitsModel.getInstance().getCategoryId(categoryId, programId);
             bindData(programsVO);
         }
     }

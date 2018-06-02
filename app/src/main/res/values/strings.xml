@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PADC-5-P-TLA-Ex1-SimpleHabits</string>
+    <string name="app_name">Simple Habits</string>
     <string name="txt_start">Start Here</string>
     <string name="txt_starter">Day 1</string>
     <string name="txt_evening_title">Evening Meditations</string>

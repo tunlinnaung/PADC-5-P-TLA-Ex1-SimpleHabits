@@ -6,8 +6,8 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
  * Created by eidoshack on 6/1/18.
  */
 
-public interface SeriesDelegate {
+public interface CurrentProgramDelegate {
 
-    void onTapProgram(String id);
+    void onTapCurrentProgram(String id);
 
 }

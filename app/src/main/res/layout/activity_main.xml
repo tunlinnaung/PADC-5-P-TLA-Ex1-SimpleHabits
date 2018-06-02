@@ -8,262 +8,27 @@
     tools:context="xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.activities.SeriesActivity"
     android:background="@color/background">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_large"
-            android:layout_marginBottom="@dimen/margin_xxlarge"
-            android:layout_marginLeft="@dimen/margin_medium_2"
-            android:layout_marginRight="@dimen/margin_medium">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_xxxlarge"
+            />
 
-            <TextView
-                android:id="@+id/tv_start"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_start"
-                android:textColor="@color/white_full"
-                android:textSize="@dimen/text_regular_3x"
-                />
+    </RelativeLayout>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_starter"
-                android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:layout_below="@id/tv_start"
-                android:layout_marginTop="@dimen/margin_medium_2"
-                android:layout_marginBottom="@dimen/margin_xxlarge"
-                card_view:cardElevation="@dimen/margin_small">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/secondary_color">
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_add_24dp"
-                        android:background="@color/secondary_color"
-                        android:layout_alignParentRight="true"
-                        android:padding="@dimen/margin_medium"
-                        />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_centerInParent="true">
-
-                        <TextView
-                            android:id="@+id/tv_starter_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Simple Habit Starter"
-                            android:gravity="center"
-                            android:textColor="@color/white_full"
-                            android:textSize="@dimen/text_heading_1x"
-                            />
-
-                        <TextView
-                            android:id="@+id/tv_current_period"
-                            android:layout_width="140dp"
-                            android:layout_height="wrap_content"
-                            android:text="Day 1"
-                            android:background="@drawable/rounded_button"
-                            android:textSize="@dimen/text_regular_2x"
-                            android:textColor="@color/white_full"
-                            android:layout_centerInParent="true"
-                            android:gravity="center_vertical|center"
-                            android:layout_below="@id/tv_starter_title"
-                            android:drawableLeft="@drawable/ic_play_arrow_24dp"
-                            android:layout_marginTop="@dimen/margin_medium_2"
-                            />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/tv_average_lengths"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="5 mins"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="right"
-                        android:padding="@dimen/margin_medium_2"
-                        android:textColor="@color/white_full"
-                        android:textSize="@dimen/text_regular"
-                        />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <RelativeLayout
-                android:id="@+id/rl_evening_meditation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cv_starter">
-
-                <TextView
-                    android:id="@+id/tv_evening_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_evening_title"
-                    android:textColor="@color/white_full"
-                    android:textSize="@dimen/text_regular_3x"
-                    />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_evening_meditation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_evening_title"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_healthy_mind"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl_evening_meditation"
-                android:layout_marginTop="@dimen/margin_large">
-
-                <TextView
-                    android:id="@+id/tv_healthy_mind_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_healthy_mind"
-                    android:textColor="@color/white_full"
-                    android:textSize="@dimen/text_regular_3x"
-                    />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_healthy_mind"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_healthy_mind_title"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_new_simple_habit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl_healthy_mind"
-                android:layout_marginTop="@dimen/margin_large">
-
-                <TextView
-                    android:id="@+id/tv_new_simple_habit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_new_simple_habit"
-                    android:textColor="@color/white_full"
-                    android:textSize="@dimen/text_regular_3x"
-                    />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_new_simple_habit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_new_simple_habit_title"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_most_popular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl_new_simple_habit"
-                android:layout_marginTop="@dimen/margin_large">
-
-                <TextView
-                    android:id="@+id/tv_most_popular_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_most_popular"
-                    android:textColor="@color/white_full"
-                    android:textSize="@dimen/text_regular_3x"
-                    />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_most_popular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_most_popular_title"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_all_topics"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rl_most_popular"
-                android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/bottom_height">
-
-                <TextView
-                    android:id="@+id/tv_all_topics_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_all_topics"
-                    android:textColor="@color/white_full"
-                    android:textSize="@dimen/text_regular_3x"
-                    />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_all_topics"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_all_topics_title"
-                    android:layout_marginTop="@dimen/margin_medium_2"
-                    />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-    <com.ss.bottomnavigation.BottomNavigation
+    <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/primary">
-        <com.ss.bottomnavigation.TabItem
-            android:id="@+id/tab_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:tab_text="Meditate"
-            app:tab_icon="@drawable/ic_play_circle_filled_24dp"
-            />
-        <com.ss.bottomnavigation.TabItem
-            android:id="@+id/tab_me"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:tab_text="Me"
-            app:tab_icon="@drawable/ic_person_24dp"
-            />
-        <com.ss.bottomnavigation.TabItem
-            android:id="@+id/tab_more"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:tab_text="More"
-            app:tab_icon="@drawable/ic_more_horiz_24dp"
-            />
-    </com.ss.bottomnavigation.BottomNavigation>
+        app:itemBackground="@color/primary"
+        app:itemIconTint="@color/white_full"
+        app:itemTextColor="@color/white_full"
+        app:menu="@menu/bottom_navigation_main" />
 
 </RelativeLayout>

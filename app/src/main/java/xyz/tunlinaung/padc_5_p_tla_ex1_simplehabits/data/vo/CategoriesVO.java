@@ -8,7 +8,7 @@ import java.util.List;
  * Created by eidoshack on 5/23/18.
  */
 
-public class CategoriesVO {
+public class CategoriesVO implements MainScreenVO {
 
     @SerializedName("category-id")
     private String categoryId;

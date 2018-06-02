@@ -1,13 +1,18 @@
 package xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.models;
 
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.MainScreenVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.events.RestApiEvents;
@@ -22,16 +27,12 @@ public class SimpleHabitsModel {
 
     private static SimpleHabitsModel objInstance;
 
-    public CurrentProgramsVO mCurrentProgram;
-    public List<CategoriesVO> mCategories;
-    public List<TopicsVO> mTopics;
+    private List<MainScreenVO> mMainScreenVOs;
     private int mmNewsPageIndex = 1;
 
     private SimpleHabitsModel() {
         EventBus.getDefault().register(this);
-        mCurrentProgram = new CurrentProgramsVO();
-        mCategories = new ArrayList<>();
-        mTopics = new ArrayList<>();
+        mMainScreenVOs = new ArrayList<>();
     }
 
     public static SimpleHabitsModel getInstance() {
@@ -43,34 +44,50 @@ public class SimpleHabitsModel {
 
     public void startLoadingSimpleHabits() {
         SimpleHabitsDataAgentImpl.getInstance().loadCurrentPrograms(AppConstants.ACCESS_TOKEN, mmNewsPageIndex);
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onCurrentProgramLoaded(RestApiEvents.CurrentProgramsDataLoadedEvent event) {
+        mMainScreenVOs.add(event.getLoadCurrentPrograms());
         SimpleHabitsDataAgentImpl.getInstance().loadCategories(AppConstants.ACCESS_TOKEN, mmNewsPageIndex);
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onCategoriesProgramLoaded(RestApiEvents.CategoriesDataLoadedEvent event) {
+        mMainScreenVOs.addAll(event.getLoadCategories());
         SimpleHabitsDataAgentImpl.getInstance().loadTopics(AppConstants.ACCESS_TOKEN, mmNewsPageIndex);
     }
 
-    @Subscribe
-    public void onCurrentProgramDataLoaded(RestApiEvents.CurrentProgramsDataLoadedEvent event) {
-        mCurrentProgram = event.getLoadCurrentPrograms();
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onTopicsLoaded(RestApiEvents.TopicsDataLoadedEvent event) {
+        mMainScreenVOs.addAll(event.getLoadTopics());
+        RestApiEvents.MainScreenLoadedEvent mainEvent = new RestApiEvents.MainScreenLoadedEvent(mMainScreenVOs);
+        EventBus.getDefault().post(mainEvent);
     }
 
-    @Subscribe
-    public void onCategoriesDataLoaded(RestApiEvents.CategoriesDataLoadedEvent event) {
-        mCategories.addAll(event.getLoadCategories());
+    public CurrentProgramsVO getCurrentProgram() {
+        for (MainScreenVO mainScreenVO : mMainScreenVOs) {
+            if (mainScreenVO instanceof CurrentProgramsVO) {
+                return (CurrentProgramsVO) mainScreenVO;
+            }
+        }
+        return null;
     }
 
-    @Subscribe
-    public void onTopicsDataLoaded(RestApiEvents.TopicsDataLoadedEvent event) {
-        mTopics.addAll(event.getLoadTopics());
-    }
-
-    public ProgramsVO getProgramId(String id) {
-        for (CategoriesVO categoriesVO : mCategories) {
-            for (ProgramsVO programsVO : categoriesVO.getPrograms()) {
-                if (programsVO.getProgramId().equalsIgnoreCase(id)) {
-                    return programsVO;
+    public @Nullable ProgramsVO getCategoryId(String categoryId, String programId) {
+        for (MainScreenVO mainScreenVO : mMainScreenVOs) {
+            if (mainScreenVO instanceof CategoriesVO) {
+                CategoriesVO categoriesVO = (CategoriesVO) mainScreenVO;
+                if (TextUtils.equals(categoryId, categoriesVO.getCategoryId())) {
+                    for (ProgramsVO programsVO : categoriesVO.getPrograms()) {
+                        if (TextUtils.equals(programId, programsVO.getProgramId())) {
+                            return programsVO;
+                        }
+                    }
                 }
             }
         }
-        return new ProgramsVO();
+        return null;
     }
 
 }

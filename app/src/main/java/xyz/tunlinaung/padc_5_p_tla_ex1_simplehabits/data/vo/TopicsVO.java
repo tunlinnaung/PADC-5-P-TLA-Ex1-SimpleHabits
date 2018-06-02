@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by eidoshack on 5/23/18.
  */
 
-public class TopicsVO {
+public class TopicsVO implements MainScreenVO {
 
     @SerializedName("topic-name")
     private String topicName;

@@ -34,31 +34,6 @@ public class MeActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
-    void initBottomNavigation() {
-        BottomNavigation bottomNavigation=(BottomNavigation)findViewById(R.id.bottom_navigation);
-        bottomNavigation.setDefaultItem(2);
-        bottomNavigation.setOnSelectedItemChangeListener(new OnSelectedItemChangeListener() {
-            @Override
-            public void onSelectedItemChanged(int itemId) {
-                switch (itemId){
-                    case R.id.tab_home:
-                        Intent mainIntent = SeriesActivity.newIntent(getApplicationContext());
-                        startActivity(mainIntent);
-                        break;
-                    case R.id.tab_me:
-//                        Intent myIntent = MeActivity.newIntent(getApplicationContext());
-//                        startActivity(myIntent);
-                        break;
-                    case R.id.tab_more:
-                        //Intent moreIntent = SeriesActivity.newIntent(getApplicationContext());
-                        //startActivity(moreIntent);
-                        break;
-                }
-            }
-        });
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onErrorInvokingAPI(RestApiEvents.ErrorInvokingAPIEvent event) {
         Snackbar.make(tvProgressTitle, event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();

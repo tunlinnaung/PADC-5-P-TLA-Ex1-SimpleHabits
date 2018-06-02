@@ -4,6 +4,7 @@ import java.util.List;
 
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.MainScreenVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
 
 /**
@@ -61,6 +62,18 @@ public class RestApiEvents {
 
         public List<TopicsVO> getLoadTopics() {
             return loadTopics;
+        }
+    }
+
+    public static class MainScreenLoadedEvent {
+        private List<MainScreenVO> mainScreenVOS;
+
+        public MainScreenLoadedEvent(List<MainScreenVO> mainScreenVOS) {
+            this.mainScreenVOS = mainScreenVOS;
+        }
+
+        public List<MainScreenVO> getMainScreenVOS() {
+            return mainScreenVOS;
         }
     }
 

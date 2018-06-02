@@ -8,7 +8,7 @@ import java.util.List;
  * Created by eidoshack on 5/23/18.
  */
 
-public class CurrentProgramsVO {
+public class CurrentProgramsVO implements MainScreenVO {
 
     @SerializedName("program-id")
     private String programId;

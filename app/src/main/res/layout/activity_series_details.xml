@@ -15,32 +15,13 @@
             android:id="@+id/ctl_details"
             android:layout_width="match_parent"
             android:layout_height="256dp"
-            android:background="@color/primary_dark"
+            android:background="@color/secondary_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/primary"
+            app:contentScrim="@color/secondary_color"
             app:expandedTitleGravity="center"
             app:title="Simple Habit Starter"
             app:collapsedTitleTextAppearance="@style/collapsingToolbarLayoutTitleColor"
             app:expandedTitleTextAppearance="@style/collapsingToolbarLayoutTitleColor">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/secondary_color">
-
-                <TextView
-                    android:id="@+id/tv_current_program_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_centerInParent="true"
-                    android:paddingBottom="@dimen/margin_xxlarge"
-                    android:textSize="@dimen/text_regular_3x"
-                    android:textStyle="bold"
-                    android:textColor="@color/white_full"
-                    />
-
-            </RelativeLayout>
 
             <!-- ActionBarSize = 56dp - default -->
             <android.support.v7.widget.Toolbar
@@ -140,8 +121,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
-
-
 
         </LinearLayout>
 

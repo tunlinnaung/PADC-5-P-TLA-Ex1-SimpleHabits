@@ -1,15 +1,10 @@
 package xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by eidoshack on 5/17/18.
- */
+public class SeriesViewHolder extends BaseViewHolder {
 
-public class MostPopularViewHolder extends BaseViewHolder {
-
-    public MostPopularViewHolder(View itemView) {
+    public SeriesViewHolder(View itemView) {
         super(itemView);
     }
 
@@ -22,4 +17,5 @@ public class MostPopularViewHolder extends BaseViewHolder {
     public void onClick(View view) {
 
     }
+
 }
