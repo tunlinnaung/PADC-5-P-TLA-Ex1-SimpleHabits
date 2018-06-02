@@ -37,6 +37,7 @@ public class MeActivity extends BaseActivity {
     @Override
     void initBottomNavigation() {
         BottomNavigation bottomNavigation=(BottomNavigation)findViewById(R.id.bottom_navigation);
+        bottomNavigation.setDefaultItem(2);
         bottomNavigation.setOnSelectedItemChangeListener(new OnSelectedItemChangeListener() {
             @Override
             public void onSelectedItemChanged(int itemId) {
@@ -46,8 +47,8 @@ public class MeActivity extends BaseActivity {
                         startActivity(mainIntent);
                         break;
                     case R.id.tab_me:
-                        //Intent myIntent = SeriesActivity.newIntent(getApplicationContext());
-                        //startActivity(myIntent);
+//                        Intent myIntent = MeActivity.newIntent(getApplicationContext());
+//                        startActivity(myIntent);
                         break;
                     case R.id.tab_more:
                         //Intent moreIntent = SeriesActivity.newIntent(getApplicationContext());

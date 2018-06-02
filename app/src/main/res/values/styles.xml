@@ -44,4 +44,10 @@
         <item name="android:textColor">@color/accent</item>
     </style>
 
+    <style name="collapsingToolbarLayoutTitleColor" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">@dimen/text_regular_3x</item>
+        <item name="android:textColor">@color/white_full</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

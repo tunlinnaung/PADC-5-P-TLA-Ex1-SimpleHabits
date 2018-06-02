@@ -22,9 +22,9 @@ public class SimpleHabitsModel {
 
     private static SimpleHabitsModel objInstance;
 
-    public static CurrentProgramsVO mCurrentProgram;
-    public static List<CategoriesVO> mCategories;
-    public static List<TopicsVO> mTopics;
+    public CurrentProgramsVO mCurrentProgram;
+    public List<CategoriesVO> mCategories;
+    public List<TopicsVO> mTopics;
     private int mmNewsPageIndex = 1;
 
     private SimpleHabitsModel() {

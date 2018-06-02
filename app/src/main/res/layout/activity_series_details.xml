@@ -12,11 +12,16 @@
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/ctl_details"
             android:layout_width="match_parent"
             android:layout_height="256dp"
             android:background="@color/primary_dark"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/primary">
+            app:contentScrim="@color/primary"
+            app:expandedTitleGravity="center"
+            app:title="Simple Habit Starter"
+            app:collapsedTitleTextAppearance="@style/collapsingToolbarLayoutTitleColor"
+            app:expandedTitleTextAppearance="@style/collapsingToolbarLayoutTitleColor">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -27,7 +32,7 @@
                     android:id="@+id/tv_current_program_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Simple Habit Starter"
+                    android:text=""
                     android:layout_centerInParent="true"
                     android:paddingBottom="@dimen/margin_xxlarge"
                     android:textSize="@dimen/text_regular_3x"
@@ -43,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:tooltipText=""
                 />
 
         </android.support.design.widget.CollapsingToolbarLayout>

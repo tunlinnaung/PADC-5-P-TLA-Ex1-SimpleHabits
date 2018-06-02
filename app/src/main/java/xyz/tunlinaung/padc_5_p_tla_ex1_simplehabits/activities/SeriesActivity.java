@@ -105,13 +105,14 @@ public class SeriesActivity extends BaseActivity implements SeriesDelegate {
     @Override
     void initBottomNavigation() {
         BottomNavigation bottomNavigation=(BottomNavigation)findViewById(R.id.bottom_navigation);
+        bottomNavigation.setDefaultItem(0);
         bottomNavigation.setOnSelectedItemChangeListener(new OnSelectedItemChangeListener() {
             @Override
             public void onSelectedItemChanged(int itemId) {
                 switch (itemId){
                     case R.id.tab_home:
-                        //Intent mainIntent = SeriesActivity.newIntent(getApplicationContext());
-                        //startActivity(mainIntent);
+//                        Intent mainIntent = SeriesActivity.newIntent(getApplicationContext());
+//                        startActivity(mainIntent);
                         break;
                     case R.id.tab_me:
                         Intent myIntent = MeActivity.newIntent(getApplicationContext());

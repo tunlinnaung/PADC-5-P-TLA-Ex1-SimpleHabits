@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -24,14 +27,17 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 
 public class SeriesDetailsActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_current_program_title)
-    TextView tvCurrentProgramTitle;
-
     @BindView(R.id.tv_current_program_desc)
     TextView tvCurrentProgramDesc;
 
     @BindView(R.id.rv_all_sessions)
     RecyclerView rvSessions;
+
+    @BindView(R.id.ctl_details)
+    CollapsingToolbarLayout ctlDetails;
+
+    @BindView(R.id.toolbar_details)
+    Toolbar toolbar;
 
     AllSessionsAdapter allSessionsAdapter;
 
@@ -45,6 +51,14 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series_details);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+//            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
         rvSessions.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         allSessionsAdapter = new AllSessionsAdapter(getApplicationContext());
@@ -63,13 +77,13 @@ public class SeriesDetailsActivity extends AppCompatActivity {
     }
 
     private void bindData(CurrentProgramsVO currentProgramsVO) {
-        tvCurrentProgramTitle.setText(currentProgramsVO.getTitle());
+        ctlDetails.setTitle(currentProgramsVO.getTitle());
         tvCurrentProgramDesc.setText(currentProgramsVO.getDescription());
         allSessionsAdapter.appendNewData(currentProgramsVO.getSessions());
     }
 
     private void bindData(ProgramsVO programsVO) {
-        tvCurrentProgramTitle.setText(programsVO.getTitle());
+        ctlDetails.setTitle(programsVO.getTitle());
         tvCurrentProgramDesc.setText(programsVO.getDescription());
         allSessionsAdapter.appendNewData(programsVO.getSessions());
     }
@@ -79,6 +93,16 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.details, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
