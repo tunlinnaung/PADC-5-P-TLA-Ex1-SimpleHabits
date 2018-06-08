@@ -1,25 +1,45 @@
 package xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.db.ProgramLengthTypeConverter;
+
 /**
  * Created by eidoshack on 5/23/18.
  */
-
+@Entity(tableName = "CurrentProgram")
 public class CurrentProgramsVO implements MainScreenVO {
 
+    @PrimaryKey
+    @NonNull
     @SerializedName("program-id")
     private String programId;
+
     private String title;
+
     @SerializedName("current-period")
     private String currentPeriod;
+
     private String background;
+
     private String description;
+
     @SerializedName("average-lengths")
-    private List<Integer> averageLengths;
+    @TypeConverters(ProgramLengthTypeConverter.class)
+    private int[] averageLengths;
+
+    @Ignore
     private List<SessionsVO> sessions;
+
+    private String sessionId;
 
     public String getProgramId() {
         return programId;
@@ -61,11 +81,11 @@ public class CurrentProgramsVO implements MainScreenVO {
         this.description = description;
     }
 
-    public List<Integer> getAverageLengths() {
+    public int[] getAverageLengths() {
         return averageLengths;
     }
 
-    public void setAverageLengths(List<Integer> averageLengths) {
+    public void setAverageLengths(int[] averageLengths) {
         this.averageLengths = averageLengths;
     }
 
@@ -75,5 +95,13 @@ public class CurrentProgramsVO implements MainScreenVO {
 
     public void setSessions(List<SessionsVO> sessions) {
         this.sessions = sessions;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }

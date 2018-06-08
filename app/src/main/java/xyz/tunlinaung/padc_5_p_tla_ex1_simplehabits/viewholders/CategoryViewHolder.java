@@ -40,7 +40,7 @@ public class CategoryViewHolder extends BaseViewHolder {
         programsVO = (ProgramsVO) data;
         if (programsVO != null) {
             tvEveningTitle.setText(programsVO.getTitle());
-            tvEveningDuration.setText(programsVO.getAverageLengths().get(0) + " mins");
+            tvEveningDuration.setText(programsVO.getAverageLengths()[0] + " mins");
         }
     }
 

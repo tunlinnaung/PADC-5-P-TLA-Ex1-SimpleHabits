@@ -5,11 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.CategoriesAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CategoriesDelegate;
 
 public class CategoriesViewHolder extends BaseViewHolder {
@@ -42,7 +45,8 @@ public class CategoriesViewHolder extends BaseViewHolder {
         CategoriesVO categoriesVO = (CategoriesVO) data;
         mData = categoriesVO;
         tvCategories.setText(categoriesVO.getTitle().toString());
-        mCategoriesAdapter.setNewData(categoriesVO.getPrograms());
+        List<ProgramsVO> programs = mCategoriesDelegate.getProgramsById(categoriesVO.getProgramId());
+        mCategoriesAdapter.setNewData(programs);
         mCategoriesAdapter.setData(categoriesVO);
     }
 

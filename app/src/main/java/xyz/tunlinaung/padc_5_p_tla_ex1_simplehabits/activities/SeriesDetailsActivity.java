@@ -78,10 +78,10 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         String programId = getIntent().getStringExtra("program_id");
 
         if (programData.equalsIgnoreCase("CURRENT_PROGRAM")) {
-            CurrentProgramsVO currentProgramsVO = SimpleHabitsModel.getInstance().getCurrentProgram();
+            CurrentProgramsVO currentProgramsVO = new SimpleHabitsModel().getCurrentProgram();
             bindData(currentProgramsVO);
         } else if (programData.equalsIgnoreCase("CATEGORY")) {
-            ProgramsVO programsVO = SimpleHabitsModel.getInstance().getCategoryId(categoryId, programId);
+            ProgramsVO programsVO = new SimpleHabitsModel().getCategoryId(categoryId, programId);
             bindData(programsVO);
         }
     }
