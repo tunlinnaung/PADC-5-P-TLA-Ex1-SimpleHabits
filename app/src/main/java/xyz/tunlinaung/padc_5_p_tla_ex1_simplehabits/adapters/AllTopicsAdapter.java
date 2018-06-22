@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.TopicsDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders.AllTopicsViewHolder;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
@@ -16,17 +17,17 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 
 public class AllTopicsAdapter extends BaseRecyclerAdapter {
 
-    private TopicsDelegate mTopicsDelegate;
+    private MainItemDelegate mDelegate;
 
-    public AllTopicsAdapter(Context context, TopicsDelegate topicsDelegate) {
+    public AllTopicsAdapter(Context context, MainItemDelegate delegate) {
         super(context);
-        this.mTopicsDelegate = topicsDelegate;
+        this.mDelegate = delegate;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View allTopicsItemView = mLayoutInflator.inflate(R.layout.view_item_all_topics, parent, false);
-        return new AllTopicsViewHolder(allTopicsItemView, mTopicsDelegate);
+        return new AllTopicsViewHolder(allTopicsItemView, mDelegate);
     }
 }

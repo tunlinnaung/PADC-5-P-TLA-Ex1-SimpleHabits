@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.AllTopicsAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.TopicsDelegate;
 
 public class TopicViewHolder extends BaseViewHolder {
@@ -22,15 +23,15 @@ public class TopicViewHolder extends BaseViewHolder {
 
     AllTopicsAdapter mAllTopicsAdapter;
 
-    TopicsDelegate mTopicsDelegate;
+    private MainItemDelegate mDelegate;
 
-    public TopicViewHolder(View itemView, TopicsDelegate topicsDelegate) {
+    public TopicViewHolder(View itemView, MainItemDelegate delegate) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
-        this.mTopicsDelegate = topicsDelegate;
+        this.mDelegate = delegate;
 
-        mAllTopicsAdapter = new AllTopicsAdapter(itemView.getContext(), mTopicsDelegate);
+        mAllTopicsAdapter = new AllTopicsAdapter(itemView.getContext(), mDelegate);
         rvTopic.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvTopic.setAdapter(mAllTopicsAdapter);
     }

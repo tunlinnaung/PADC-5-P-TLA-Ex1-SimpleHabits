@@ -10,6 +10,7 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CategoriesDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CurrentProgramDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 
 /**
  * Created by eidoshack on 5/17/18.
@@ -23,15 +24,15 @@ public class CategoryViewHolder extends BaseViewHolder {
     @BindView(R.id.tv_evening_duration)
     TextView tvEveningDuration;
 
-    CategoriesDelegate mCategoriesDelegate;
+    private MainItemDelegate mDelegate;
 
     ProgramsVO programsVO;
 
     CategoriesVO categoriesVO;
 
-    public CategoryViewHolder(View itemView, CategoriesDelegate categoriesDelegate, CategoriesVO categoriesVO) {
+    public CategoryViewHolder(View itemView, MainItemDelegate delegate, CategoriesVO categoriesVO) {
         super(itemView);
-        this.mCategoriesDelegate = categoriesDelegate;
+        this.mDelegate = delegate;
         this.categoriesVO = categoriesVO;
     }
 
@@ -46,6 +47,6 @@ public class CategoryViewHolder extends BaseViewHolder {
 
     @Override
     public void onClick(View view) {
-        mCategoriesDelegate.onTapCategory(categoriesVO.getCategoryId(), programsVO.getProgramId());
+        mDelegate.onTapCategory(categoriesVO.getCategoryId(), programsVO.getProgramId());
     }
 }

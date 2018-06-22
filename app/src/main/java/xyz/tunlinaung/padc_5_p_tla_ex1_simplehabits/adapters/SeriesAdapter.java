@@ -12,7 +12,9 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.MainScreenVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CategoriesDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CurrentProgramDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.TopicsDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.mvp.presenters.MainPresenter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders.BaseViewHolder;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders.CategoriesViewHolder;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.viewholders.CurrentProgramViewHolder;
@@ -25,15 +27,11 @@ public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder, MainScree
     private static final int CATEGORIES_PROGRAM = 2;
     private static final int ALL_TOPIC = 3;
 
-    private CurrentProgramDelegate mCurrentProgramDelegate;
-    private CategoriesDelegate mCategoriesDelegate;
-    private TopicsDelegate mTopicsDelegate;
+    private MainItemDelegate mDelegate;
 
-    public SeriesAdapter(Context context, CurrentProgramDelegate currentProgramDelegate, CategoriesDelegate categoriesDelegate, TopicsDelegate topicsDelegate) {
+    public SeriesAdapter(Context context, MainItemDelegate delegate) {
         super(context);
-        this.mCurrentProgramDelegate = currentProgramDelegate;
-        this.mCategoriesDelegate = categoriesDelegate;
-        this.mTopicsDelegate = topicsDelegate;
+        this.mDelegate = delegate;
     }
 
     @NonNull
@@ -41,13 +39,13 @@ public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder, MainScree
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == CURRENT_PROGRAM) {
             View view = mLayoutInflator.inflate(R.layout.view_item_current_program, parent, false);
-            return new CurrentProgramViewHolder(view, mCurrentProgramDelegate);
+            return new CurrentProgramViewHolder(view, mDelegate);
         } else if (viewType == CATEGORIES_PROGRAM) {
             View view = mLayoutInflator.inflate(R.layout.view_item_categories, parent, false);
-            return new CategoriesViewHolder(view, mCategoriesDelegate);
+            return new CategoriesViewHolder(view, mDelegate);
         } else {
             View view = mLayoutInflator.inflate(R.layout.view_item_topic, parent, false);
-            return new TopicViewHolder(view, mTopicsDelegate);
+            return new TopicViewHolder(view, mDelegate);
         }
     }
 

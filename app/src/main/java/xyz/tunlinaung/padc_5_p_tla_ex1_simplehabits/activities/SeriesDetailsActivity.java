@@ -20,12 +20,14 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.AllSessionsAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.models.SimpleHabitsModel;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.mvp.presenters.SeriesDetailsPresenter;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.mvp.views.SeriesDetailsView;
 
 /**
  * Created by eidoshack on 5/31/18.
  */
 
-public class SeriesDetailsActivity extends AppCompatActivity {
+public class SeriesDetailsActivity extends AppCompatActivity implements SeriesDetailsView {
 
     @BindView(R.id.tv_current_program_desc)
     TextView tvCurrentProgramDesc;
@@ -40,6 +42,8 @@ public class SeriesDetailsActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     AllSessionsAdapter allSessionsAdapter;
+
+    private SeriesDetailsPresenter mPresenter;
 
     public static Intent newIntentByCurrentProgram(Context context) {
         Intent intent = new Intent(context, SeriesDetailsActivity.class);
@@ -61,6 +65,9 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_series_details);
         ButterKnife.bind(this);
 
+        mPresenter = new SeriesDetailsPresenter(this);
+        mPresenter.onCreate();
+
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24dp);
@@ -77,25 +84,38 @@ public class SeriesDetailsActivity extends AppCompatActivity {
         String categoryId = getIntent().getStringExtra("category_id");
         String programId = getIntent().getStringExtra("program_id");
 
-        if (programData.equalsIgnoreCase("CURRENT_PROGRAM")) {
-            CurrentProgramsVO currentProgramsVO = new SimpleHabitsModel().getCurrentProgram();
-            bindData(currentProgramsVO);
-        } else if (programData.equalsIgnoreCase("CATEGORY")) {
-            ProgramsVO programsVO = new SimpleHabitsModel().getCategoryId(categoryId, programId);
-            bindData(programsVO);
-        }
+        mPresenter.onFinishUIComponentSetup(programData, categoryId, programId);
+
     }
 
-    private void bindData(CurrentProgramsVO currentProgramsVO) {
-        ctlDetails.setTitle(currentProgramsVO.getTitle());
-        tvCurrentProgramDesc.setText(currentProgramsVO.getDescription());
-        allSessionsAdapter.appendNewData(currentProgramsVO.getSessions());
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.onStart();
     }
 
-    private void bindData(ProgramsVO programsVO) {
-        ctlDetails.setTitle(programsVO.getTitle());
-        tvCurrentProgramDesc.setText(programsVO.getDescription());
-        allSessionsAdapter.appendNewData(programsVO.getSessions());
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPresenter.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
     }
 
     @Override
@@ -116,4 +136,22 @@ public class SeriesDetailsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void bindCurrentProgramDetails(CurrentProgramsVO currentProgramsVO) {
+        ctlDetails.setTitle(currentProgramsVO.getTitle());
+        tvCurrentProgramDesc.setText(currentProgramsVO.getDescription());
+        allSessionsAdapter.appendNewData(currentProgramsVO.getSessions());
+    }
+
+    @Override
+    public void bindCategoriesDetails(ProgramsVO programsVO) {
+        ctlDetails.setTitle(programsVO.getTitle());
+        tvCurrentProgramDesc.setText(programsVO.getDescription());
+        allSessionsAdapter.appendNewData(programsVO.getSessions());
+    }
+
+    @Override
+    public void displayError(String errMsg) {
+
+    }
 }

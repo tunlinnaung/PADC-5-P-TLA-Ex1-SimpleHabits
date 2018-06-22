@@ -9,6 +9,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.TopicsDelegate;
 
 /**
@@ -23,13 +24,13 @@ public class AllTopicsViewHolder extends BaseViewHolder {
     @BindView(R.id.tv_topic_description)
     TextView tvTopicDescription;
 
-    private TopicsDelegate mTopicsDelegate;
+    private MainItemDelegate mDelegate;
 
     TopicsVO topicDatObj;
 
-    public AllTopicsViewHolder(View itemView, TopicsDelegate topicsDelegate) {
+    public AllTopicsViewHolder(View itemView, MainItemDelegate delegate) {
         super(itemView);
-        this.mTopicsDelegate = topicsDelegate;
+        this.mDelegate = delegate;
     }
 
     @Override

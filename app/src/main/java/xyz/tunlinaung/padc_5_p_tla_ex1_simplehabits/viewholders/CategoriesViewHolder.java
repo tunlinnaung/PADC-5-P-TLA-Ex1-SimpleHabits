@@ -14,6 +14,7 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.adapters.CategoriesAdapter;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.ProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CategoriesDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
 
 public class CategoriesViewHolder extends BaseViewHolder {
 
@@ -25,17 +26,17 @@ public class CategoriesViewHolder extends BaseViewHolder {
 
     CategoriesAdapter mCategoriesAdapter;
 
-    private CategoriesDelegate mCategoriesDelegate;
+    private MainItemDelegate mDelegate;
 
     private CategoriesVO categoriesVO;
 
-    public CategoriesViewHolder(View itemView, CategoriesDelegate categoriesDelegate) {
+    public CategoriesViewHolder(View itemView, MainItemDelegate delegate) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
-        this.mCategoriesDelegate = categoriesDelegate;
+        this.mDelegate = delegate;
 
-        mCategoriesAdapter = new CategoriesAdapter(itemView.getContext(), mCategoriesDelegate);
+        mCategoriesAdapter = new CategoriesAdapter(itemView.getContext(), mDelegate);
         rvCategory.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvCategory.setAdapter(mCategoriesAdapter);
     }
@@ -45,8 +46,8 @@ public class CategoriesViewHolder extends BaseViewHolder {
         CategoriesVO categoriesVO = (CategoriesVO) data;
         mData = categoriesVO;
         tvCategories.setText(categoriesVO.getTitle().toString());
-        List<ProgramsVO> programs = mCategoriesDelegate.getProgramsById(categoriesVO.getProgramId());
-        mCategoriesAdapter.setNewData(programs);
+        //List<ProgramsVO> programs = mDelegate.getProgramsById(categoriesVO.getProgramId());
+        mCategoriesAdapter.setNewData(categoriesVO.getPrograms());
         mCategoriesAdapter.setData(categoriesVO);
     }
 

@@ -19,6 +19,7 @@ package xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CategoriesVO;
@@ -31,6 +32,7 @@ import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.TopicsVO;
                        CategoriesVO.class, CurrentProgramsVO.class, ProgramsVO.class,
                        SessionsVO.class, TopicsVO.class
                      }, version = 1, exportSchema = false)
+@TypeConverters({ProgramLengthTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "PADC-SH-AC.DB";

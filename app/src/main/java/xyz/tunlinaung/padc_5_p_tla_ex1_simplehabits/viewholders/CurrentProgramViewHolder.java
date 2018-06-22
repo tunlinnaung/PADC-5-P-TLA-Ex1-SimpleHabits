@@ -9,6 +9,8 @@ import butterknife.OnClick;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.R;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.data.vo.CurrentProgramsVO;
 import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.CurrentProgramDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.delegates.MainItemDelegate;
+import xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.mvp.presenters.MainPresenter;
 
 public class CurrentProgramViewHolder extends BaseViewHolder {
 
@@ -24,14 +26,14 @@ public class CurrentProgramViewHolder extends BaseViewHolder {
     @BindView(R.id.tv_average_lengths)
     TextView tvAverageLengths;
 
-    private CurrentProgramDelegate mCurrentProgramDelegate;
+    private MainItemDelegate mDelegate;
 
     private CurrentProgramsVO mCurrentProgramsVO;
 
-    public CurrentProgramViewHolder(View itemView, CurrentProgramDelegate currentProgramDelegate) {
+    public CurrentProgramViewHolder(View itemView, MainItemDelegate delegate) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-        this.mCurrentProgramDelegate = currentProgramDelegate;
+        this.mDelegate = delegate;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class CurrentProgramViewHolder extends BaseViewHolder {
 
     @Override
     public void onClick(View view) {
-        mCurrentProgramDelegate.onTapCurrentProgram(mCurrentProgramsVO.getProgramId());
+        mDelegate.onTapCurrentProgram(mCurrentProgramsVO.getProgramId());
     }
 
 }
