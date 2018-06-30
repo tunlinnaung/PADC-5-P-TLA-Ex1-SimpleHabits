@@ -1,7 +1,6 @@
 package com.tla.simplehabits.activities;
 
 import android.app.AlertDialog;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -57,13 +56,12 @@ public class MainActivity extends BaseActivity implements MainView {
         mSeriesAdapter = new SeriesAdapter(getApplicationContext(), mPresenter);
         rvMain.setAdapter(mSeriesAdapter);
 
-        mPresenter.getMainScreensLD().observe(this, new Observer<List<MainScreenVO>>() {
-            @Override
-            public void onChanged(@Nullable List<MainScreenVO> mainScreenVOS) {
-                dialog.dismiss();
-                mSeriesAdapter.appendNewData(mainScreenVOS);
-            }
+        mPresenter.getMainScreensLD().observe(this, mainScreenVOS -> {
+            dialog.dismiss();
+            mSeriesAdapter.appendNewData(mainScreenVOS);
         });
+
+        mPresenter.getErrorLD().observe(this, this::displayError);
     }
 
     @Override

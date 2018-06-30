@@ -15,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class BaseModel {
 
+    private static final String BASE_URL = "http://padcmyanmar.com/padc-5/simple-habits/";
+
     protected SimpleHabitsAPI mApi;
 
     protected AppDatabase mAppDatabase;
@@ -27,7 +29,7 @@ public abstract class BaseModel {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://padcmyanmar.com/padc-5/simple-habits/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)

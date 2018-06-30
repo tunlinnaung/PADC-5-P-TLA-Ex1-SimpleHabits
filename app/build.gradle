@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits"
+        applicationId "com.tla.simplehabits"
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1

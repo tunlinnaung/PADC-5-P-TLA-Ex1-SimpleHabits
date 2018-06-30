@@ -2,10 +2,8 @@ package com.tla.simplehabits.data.vo;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -13,10 +11,10 @@ import java.util.List;
 /**
  * Created by eidoshack on 5/23/18.
  */
-@Entity(tableName = "Categories")
+@Entity(tableName = "Categories",
+        primaryKeys = { "categoryId", "programId"} )
 public class CategoriesVO implements MainScreenVO {
 
-    @PrimaryKey
     @NonNull
     @SerializedName("category-id")
     private String categoryId;
@@ -26,6 +24,7 @@ public class CategoriesVO implements MainScreenVO {
     @Ignore
     private List<ProgramsVO> programs;
 
+    @NonNull
     private String programId;
 
     public String getCategoryId() {

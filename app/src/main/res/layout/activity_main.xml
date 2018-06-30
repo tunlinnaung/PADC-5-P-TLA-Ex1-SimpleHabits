@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="xyz.tunlinaung.padc_5_p_tla_ex1_simplehabits.activities.SeriesActivity"
+    tools:context=".activities.MainActivity"
     android:background="@color/background">
 
     <RelativeLayout
@@ -21,6 +21,7 @@
 
     </RelativeLayout>
 
+    <!-- TODO Button navigation bar is not working well. -->
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

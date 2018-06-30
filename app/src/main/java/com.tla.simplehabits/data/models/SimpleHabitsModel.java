@@ -69,6 +69,7 @@ public class SimpleHabitsModel extends BaseModel {
                         }
                     }
 
+                    // TODO can't catch error when failed
                     return mApi.loadCategories(mmNewsPageIndex, AppConstants.ACCESS_TOKEN)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread());
@@ -136,23 +137,17 @@ public class SimpleHabitsModel extends BaseModel {
 
     private void persistCategories(List<CategoriesVO> categories) {
         for (CategoriesVO category : categories) {
-
             for (ProgramsVO program : category.getPrograms()) {
-
                 for (SessionsVO session : program.getSessions()) {
                     mAppDatabase.sessionDao().insertSession(session);
 
-                    ProgramsVO newProgram = program;
-                    newProgram.setSessionId(session.getSessionId());
-                    mAppDatabase.programDao().insertProgram(newProgram);
+                    program.setSessionId(session.getSessionId());
+                    mAppDatabase.programDao().insertProgram(program);
                 }
 
-                CategoriesVO newCategory = category;
-                newCategory.setProgramId(program.getProgramId());
+                category.setProgramId(program.getProgramId());
                 mAppDatabase.categoriesDao().insertCategory(category);
-
             }
-
         }
     }
 
@@ -165,6 +160,7 @@ public class SimpleHabitsModel extends BaseModel {
     }
 
     public CurrentProgramsVO getCurrentProgram(String programId) {
+        // TODO many looping to extract datas.
         if (mCurrentProgramList.size() == 0) {
             mCurrentProgramList.addAll(mAppDatabase.currentProgramDao().getAllCurrentPrograms());
 
@@ -183,6 +179,8 @@ public class SimpleHabitsModel extends BaseModel {
     }
 
     public @Nullable ProgramsVO getCategoryId(String categoryId, String programId) {
+        // TODO many looping to extract datas.
+        // TODO how to reflect changes after new data changes
         if (mCategoryList.size() == 0) {
             mCategoryList = mAppDatabase.categoriesDao().getAllCategories();
             mProgramList = mAppDatabase.programDao().getAllPrograms();

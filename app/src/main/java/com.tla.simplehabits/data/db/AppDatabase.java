@@ -31,7 +31,7 @@ import com.tla.simplehabits.data.vo.TopicsVO;
 @Database(entities = {
                        CategoriesVO.class, CurrentProgramsVO.class, ProgramsVO.class,
                        SessionsVO.class, TopicsVO.class
-                     }, version = 1, exportSchema = false)
+                     }, version = 2)
 @TypeConverters({ProgramLengthTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

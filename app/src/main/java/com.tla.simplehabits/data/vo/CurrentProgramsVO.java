@@ -2,7 +2,6 @@ package com.tla.simplehabits.data.vo;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
@@ -14,10 +13,10 @@ import java.util.List;
 /**
  * Created by eidoshack on 5/23/18.
  */
-@Entity(tableName = "CurrentProgram")
+@Entity(tableName = "CurrentProgram",
+        primaryKeys = { "programId", "sessionId"} )
 public class CurrentProgramsVO implements MainScreenVO {
 
-    @PrimaryKey
     @NonNull
     @SerializedName("program-id")
     private String programId;
@@ -38,6 +37,7 @@ public class CurrentProgramsVO implements MainScreenVO {
     @Ignore
     private List<SessionsVO> sessions;
 
+    @NonNull
     private String sessionId;
 
     public String getProgramId() {
